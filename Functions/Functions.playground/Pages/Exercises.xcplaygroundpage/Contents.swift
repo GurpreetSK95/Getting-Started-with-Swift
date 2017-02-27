@@ -9,11 +9,22 @@ string.remove(at: string.index(before: string.endIndex))
 
 //:Test out your discovery below by returning the last letter of the String, "bologna".
 var word = "bologna"
+word.remove(at: word.index(before: word.endIndex))
 
 //: __Exercise 2__
 //:
 //: Write a function called combineLastCharacters. It should take in an array of strings, collect the last character of each string and combine those characters to make a new string to return. Use the strategy you discovered in Problem 1 along with a for-in loop to write combineLastCharacters. Then try it on the nonsenseArray below.
 var nonsenseArray = ["bungalow", "buffalo", "indigo", "although", "Ontario", "albino", "%$&#!"]
+func combineLastCharacters(arr: [String])->String{
+    var returnString = ""
+    for var str in nonsenseArray{
+        let lastChar = str.remove(at: str.index(before: str.endIndex))
+        returnString.append(lastChar)
+    }
+    return returnString
+}
+
+combineLastCharacters(arr: nonsenseArray)
 
 //: __Exercise 3__
 //:
@@ -27,6 +38,29 @@ var nonsenseArray = ["bungalow", "buffalo", "indigo", "although", "Ontario", "al
 
 let digits = CharacterSet.decimalDigits
 
+func isOnlyDigits(string: String)->Bool{
+    var str = string
+    for char in str.characters{
+        switch char {
+        case "0":continue
+        case "1":continue
+        case "2":continue
+        case "3":continue
+        case "4":continue
+        case "5":continue
+        case "6":continue
+        case "7":continue
+        case "8":continue
+        case "9":continue
+        default:
+            return false
+        }
+    }
+    return true
+}
+
+isOnlyDigits(string: "124")
+
 //: __Exercise 4__
 //:
 //: Write a function that takes in an array of dirtyWord strings, removes all of the four-letter words, and returns a clean array.
@@ -39,8 +73,21 @@ let dirtyWordsArray = ["phooey", "darn", "drat", "blurgh", "jupiters", "argh", "
 var movies:Dictionary<String,String> = [ "Boyhood":"Richard Linklater","Inception":"Christopher Nolan", "The Hurt Locker":"Kathryn Bigelow", "Selma":"Ava Du Vernay", "Interstellar":"Christopher Nolan"]
 
 class MovieArchive {
-    
+    func filterByDirector(_ dict: Dictionary<String, String>,_ director: String){
+        var array = [String]()
+        for (movie, name) in dict{
+            if name == director {
+                array.append(movie)
+            }
+        }
+        for element in array{
+            print(element)
+        }
+    }
 }
+
+var movieArchive = MovieArchive()
+movieArchive.filterByDirector(movies, "Christopher Nolan")
 
 
 //: [Next](@next)
